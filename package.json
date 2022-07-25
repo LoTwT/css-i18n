@@ -1,0 +1,70 @@
+{
+  "name": "css-i18n",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.6.0",
+  "description": "",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "stub": "unbuild --stub",
+    "build": "unbuild",
+    "lint": "prettier -c .",
+    "prettier": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "prepublishOnly": "pnpm build",
+    "release": "bumpp && npm publish",
+    "prepare": "simple-git-hooks"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoTwT/css-i18n.git"
+  },
+  "keywords": [],
+  "author": "LoTwT <709937065@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LoTwT/css-i18n/issues"
+  },
+  "homepage": "https://github.com/LoTwT/css-i18n#readme",
+  "devDependencies": {
+    "@types/node": "^18.6.1",
+    "bumpp": "^8.2.1",
+    "lint-staged": "^13.0.3",
+    "pnpm": "^7.6.0",
+    "prettier": "^2.7.1",
+    "simple-git-hooks": "^2.8.0",
+    "typescript": "^4.7.4",
+    "unbuild": "^0.7.6",
+    "unplugin-auto-import": "^0.10.1",
+    "vitest": "^0.19.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write --ignore-unknown"
+    ]
+  }
+}
